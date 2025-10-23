@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart' as firebase;
+import 'firebase_options.dart';
 
-void main() {
+void main() async { // <--- 1. Mude para 'async'
+  // 2. É NECESSÁRIO para usar awaits em plugins nativos antes de runApp
+  WidgetsFlutterBinding.ensureInitialized(); 
+  
+  // 3. Inicializa o Firebase, usando a importação 'firebase'
+  await firebase.Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const MyApp());
 }
 
